@@ -11,28 +11,35 @@ package com.mycompany.proyecto1;
  */
 public class Player {
  
-    private int x;
-    private int y;
-
+    private Box positon;
+    private int counter;
     public Player() {
-        this.x = 0;
-        this.y = 0;
+     
+        this.positon=new Box();
+        this.counter=0;
     }
     
-
-    public int getX() {
-        return x;
+     public Box getPositon() {
+        return positon;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public void setPositon(Box positon) {
+        this.positon = positon;
     }
 
-    public int getY() {
-        return y;
+    public int getCounter() {
+        return counter;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public void setCounter(int counter) {
+        if (this.counter<29) {
+           this.counter+= counter;
+            if (this.counter>=29) {
+                this.counter=29;
+            }
+        }
     }
+    
+    
+    
 }

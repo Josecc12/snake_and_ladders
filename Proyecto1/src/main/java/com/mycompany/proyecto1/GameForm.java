@@ -17,23 +17,34 @@ public class GameForm extends javax.swing.JFrame {
     /**
      * Creates new form GameForm
      */
-    int contador;
-    Box casillas[]=new Box[25];
-    Player jugador=new Player();
+    Box casillas[]=new Box[30];
+    MenuForm menu=new MenuForm();
+    Player jugador[]=new Player[3];
+    int turn;
     public GameForm() {
         initComponents();
-        
+        this.turn=0;
         this.setLocationRelativeTo(null);
-        MenuForm menu=new MenuForm();
-        contador=0;
         for (int i = 0; i < 6; i++) {
             casillas[i]=new Box(50, 450);
         }
         for (int i = 6; i < 12; i++) {
             casillas[i]=new Box(0, 350);
         }
-        for (int i = 12; i < 25; i++) {
-            casillas[i]=new Box(50, 280);
+        for (int i = 12; i < 18; i++) {
+            casillas[i]=new Box();
+            casillas[i].setY(280);
+        }
+        for (int i = 18; i < 24; i++) {
+            casillas[i]=new Box(50, 200);
+        }
+        for (int i = 24; i < 30; i++) {
+            casillas[i]=new Box(50, 100);
+        }
+        
+        for (int i = 0; i < 3; i++) {
+            jugador[i]=new Player();
+            jugador[i].setPositon(casillas[0]);
         }
         
         casillas[1].setX(150);
@@ -47,8 +58,27 @@ public class GameForm extends javax.swing.JFrame {
         casillas[9].setX(220);
         casillas[10].setX(150);
         casillas[11].setX(50);
-        jugador.setX(casillas[0].getX());
-        jugador.setY(casillas[0].getY());
+        casillas[12].setX(50);
+        casillas[13].setX(150);
+        casillas[14].setX(220);
+        casillas[15].setX(320);
+        casillas[16].setX(400);
+        casillas[17].setX(480);
+        casillas[18].setX(480);
+        casillas[19].setX(400);
+        casillas[20].setX(320);
+        casillas[21].setX(220);
+        casillas[22].setX(150);
+        casillas[23].setX(50);
+        casillas[24].setX(50);
+        casillas[25].setX(150);
+        casillas[26].setX(220);
+        casillas[27].setX(320);
+        casillas[28].setX(400);
+        casillas[29].setX(480);
+        infoDados.setText("Tiro de Dados:"+0);
+
+        
     }
 
     /**
@@ -64,6 +94,8 @@ public class GameForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Tirar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        infoDados = new javax.swing.JLabel();
+        jLabelGanador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +117,10 @@ public class GameForm extends javax.swing.JFrame {
             }
         });
 
+        infoDados.setText("infodados");
+
+        jLabelGanador.setFont(new java.awt.Font("Microsoft JhengHei Light", 2, 18)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,14 +131,24 @@ public class GameForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(Tirar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(24, 24, 24))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(infoDados, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Tirar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(24, 24, 24))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addContainerGap())))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabelGanador, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,9 +159,13 @@ public class GameForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Tirar)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(infoDados, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(121, 121, 121)
+                .addComponent(jLabelGanador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -125,13 +175,22 @@ public class GameForm extends javax.swing.JFrame {
 
     private void TirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TirarActionPerformed
         // TODO add your handling code here:
+               int random = (int) (Math.random() * 6 + 1);
+            jugador[this.turn].setCounter(random);   
+        infoDados.setText("Tiro de Dados:"+random);
     }//GEN-LAST:event_TirarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.contador++;
-        jugador.setX(casillas[this.contador].getX());
-        jugador.setY(casillas[this.contador].getY());
+        if (jugador[this.turn].getCounter()==29) {
+            jLabelGanador.setText("GANADOR PLAYER "+(this.turn+1));
+        }
+        
+        jugador[this.turn].setPositon(casillas[jugador[this.turn].getCounter()]);
+        this.turn++;
+        if (this.turn>=menu.getPlayers()) {
+            this.turn=0;
+        }
         repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -172,18 +231,33 @@ public class GameForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Tirar;
+    private javax.swing.JLabel infoDados;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelGanador;
     // End of variables declaration//GEN-END:variables
 
 
     public void paint(Graphics g){
         super.paint(g);
-        g.setColor(Color.BLUE);
-        g.fillOval(50, 450, 40, 40);
-        g.setColor(Color.BLACK);
-        g.fillOval(this.jugador.getX(), this.jugador.getY(), 40, 40);
+        if (menu.getPlayers()==1) {
+            g.setColor(Color.BLACK);
+            g.fillOval(jugador[0].getPositon().getX(), jugador[0].getPositon().getY(), 40, 40);
+        }
+        if (menu.getPlayers()==2) {
+            g.setColor(Color.BLACK);
+            g.fillOval(jugador[0].getPositon().getX(), jugador[0].getPositon().getY(), 40, 40);
+            g.setColor(Color.WHITE);
+            g.fillOval(jugador[1].getPositon().getX(), jugador[1].getPositon().getY(), 40, 40);
+        }
+        if (menu.getPlayers()==3) {
+            g.setColor(Color.BLACK);
+            g.fillOval(jugador[0].getPositon().getX(), jugador[0].getPositon().getY(), 40, 40);
+            g.setColor(Color.WHITE);
+            g.fillOval(50, 450, 40, 40);
+        }
+       
     }
     
 
