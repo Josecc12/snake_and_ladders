@@ -40,6 +40,10 @@ public class Player {
         }
     }
     
+      public void setCounter(int counter, boolean s) {
+       this.counter=counter;
+    }
+    
     
     
 }
