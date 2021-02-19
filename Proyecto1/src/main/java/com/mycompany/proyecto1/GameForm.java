@@ -92,8 +92,8 @@ public class GameForm extends javax.swing.JFrame {
         escalera[3].setEnd(casillas[28]);
         escalera[0].setPosition(21);
         escalera[1].setPosition(7);
-        escalera[2].setPosition(10);
-        escalera[3].setPosition(19);
+        escalera[2].setPosition(25);
+        escalera[3].setPosition(28);
         infoDados.setText("Tiro de Dados:"+0);
 
         
@@ -223,7 +223,7 @@ public class GameForm extends javax.swing.JFrame {
             this.turn=0;
         }
         if (s==0) {
-            jugador[this.turn].setPositon(escalera[0].getStart());
+            jugador[this.turn].setPositon(escalera[1].getStart());
             s++;
         }
         repaint();
@@ -305,7 +305,9 @@ public class GameForm extends javax.swing.JFrame {
             g.setColor(Color.BLACK);
             g.fillOval(jugador[0].getPositon().getX(), jugador[0].getPositon().getY(), 40, 40);
             g.setColor(Color.WHITE);
-            g.fillOval(50, 450, 40, 40);
+            g.fillOval(jugador[1].getPositon().getX(), jugador[1].getPositon().getY(), 40, 40);
+            g.setColor(Color.pink);
+            g.fillOval(jugador[2].getPositon().getX(), jugador[2].getPositon().getY(), 40, 40);
         }
        
     }
