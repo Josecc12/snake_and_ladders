@@ -21,6 +21,7 @@ public class GameForm extends javax.swing.JFrame {
     MenuForm menu=new MenuForm();
     Player jugador[]=new Player[3];
     Ladders escalera[]=new Ladders[4];
+    Snakes serpiente[]=new Snakes[4];
     int turn;
     int s;
     public GameForm() {
@@ -51,6 +52,9 @@ public class GameForm extends javax.swing.JFrame {
         }
         for (int i = 0; i < 4; i++) {
             escalera[i]=new Ladders();
+        }
+        for (int i = 0; i < 4; i++) {
+            serpiente[i]=new Snakes();
         }
 
         casillas[1].setX(150);
@@ -90,6 +94,14 @@ public class GameForm extends javax.swing.JFrame {
         escalera[2].setEnd(casillas[25]);
         escalera[3].setStart(casillas[19]);
         escalera[3].setEnd(casillas[28]);
+        serpiente[0].setStart(casillas[17]);
+        serpiente[0].setEnd(casillas[4]);
+        serpiente[1].setStart(casillas[19]);
+        serpiente[1].setEnd(casillas[7]);;
+        serpiente[2].setStart(casillas[21]);
+        serpiente[2].setEnd(casillas[9]);
+        serpiente[3].setStart(casillas[27]);
+        serpiente[3].setEnd(casillas[1]);
         escalera[0].setPosition(21);
         escalera[1].setPosition(7);
         escalera[2].setPosition(25);
@@ -226,6 +238,10 @@ public class GameForm extends javax.swing.JFrame {
             jugador[this.turn].setPositon(escalera[1].getStart());
             s++;
         }
+        if (s==0) {
+            jugador[this.turn].setPositon(serpiente[1].getStart());
+            s++;
+        }
         repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -237,6 +253,10 @@ public class GameForm extends javax.swing.JFrame {
                     jugador[i].setPositon(escalera[j].getEnd());
                     jugador[i].setCounter(escalera[j].getPosition(),true);
                     repaint();
+                }
+                if (jugador[i].getPositon()==serpiente[i].getStart()) {
+                    jugador[i].setPositon(serpiente[j].getEnd());
+                    jugador[i].setCounter(serpiente[j].getPosition(),true);
                 }
             }
         }

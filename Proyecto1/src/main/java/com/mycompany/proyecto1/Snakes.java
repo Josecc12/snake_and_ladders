@@ -25,7 +25,7 @@ public class Snakes {
         return this.start;
     }
     
-    public void setSTart(Box start){
+    public void setStart(Box start){
         this.start = start;
     }
     
