@@ -245,6 +245,7 @@ public class GameForm extends javax.swing.JFrame {
 =======
 >>>>>>> parent of 2d76651 (Add: player 3)
 =======
+=======
 >>>>>>> parent of 2d76651 (Add: player 3)
             s++;
         }
