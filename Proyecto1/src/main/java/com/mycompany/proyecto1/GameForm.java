@@ -238,6 +238,7 @@ public class GameForm extends javax.swing.JFrame {
             jugador[this.turn].setPositon(escalera[0].getStart());
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             s++;
         }
         if (s==0) {
@@ -247,6 +248,8 @@ public class GameForm extends javax.swing.JFrame {
 =======
 =======
 >>>>>>> parent of 2d76651 (Add: player 3)
+=======
+>>>>>>> parent of 2d76651... Add: player 3
             s++;
         }
         repaint();
