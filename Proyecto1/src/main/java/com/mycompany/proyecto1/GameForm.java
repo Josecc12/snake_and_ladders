@@ -239,7 +239,7 @@ public class GameForm extends javax.swing.JFrame {
 //        if (s==0) {
 //            jugador[this.turn].setPositon(escalera[1].getStart());
 //            jugador[this.turn].setPositon(serpientes[3].getStart());
-//            s++;
+//            s++;s
 //        }
         repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
