@@ -21,6 +21,7 @@ public class GameForm extends javax.swing.JFrame {
     MenuForm menu=new MenuForm();
     Player jugador[]=new Player[3];
     Ladders escalera[]=new Ladders[4];
+    Snakes serpientes[]=new Snakes[4];
     int turn;
     int s;
     public GameForm() {
@@ -51,6 +52,7 @@ public class GameForm extends javax.swing.JFrame {
         }
         for (int i = 0; i < 4; i++) {
             escalera[i]=new Ladders();
+            serpientes[i]=new Snakes();
         }
 
         casillas[1].setX(150);
@@ -94,6 +96,18 @@ public class GameForm extends javax.swing.JFrame {
         escalera[1].setPosition(7);
         escalera[2].setPosition(25);
         escalera[3].setPosition(28);
+        serpientes[0].setSTart(casillas[16]);
+        serpientes[0].setEnd(casillas[3]);
+        serpientes[1].setSTart(casillas[18]);
+        serpientes[1].setEnd(casillas[6]);
+        serpientes[2].setSTart(casillas[20]);
+        serpientes[2].setEnd(casillas[8]);
+        serpientes[3].setSTart(casillas[26]);
+        serpientes[3].setEnd(casillas[0]);
+        serpientes[0].setPosition(3);
+        serpientes[1].setPosition(6);
+        serpientes[2].setPosition(8);
+        serpientes[3].setPosition(0);
         infoDados.setText("Tiro de Dados:"+0);
 
         
@@ -222,10 +236,11 @@ public class GameForm extends javax.swing.JFrame {
         if (this.turn>=menu.getPlayers()) {
             this.turn=0;
         }
-        if (s==0) {
-            jugador[this.turn].setPositon(escalera[1].getStart());
-            s++;
-        }
+//        if (s==0) {
+//            jugador[this.turn].setPositon(escalera[1].getStart());
+//            jugador[this.turn].setPositon(serpientes[3].getStart());
+//            s++;
+//        }
         repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -236,6 +251,11 @@ public class GameForm extends javax.swing.JFrame {
                 if (jugador[i].getPositon()==escalera[j].getStart()) {
                     jugador[i].setPositon(escalera[j].getEnd());
                     jugador[i].setCounter(escalera[j].getPosition(),true);
+                    repaint();
+                }
+                if (jugador[i].getPositon()==serpientes[j].getStart()) {
+                    jugador[i].setPositon(serpientes[j].getEnd());
+                    jugador[i].setCounter(serpientes[j].getPosition(), true);
                     repaint();
                 }
             }
