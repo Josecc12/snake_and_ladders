@@ -237,11 +237,13 @@ public class GameForm extends javax.swing.JFrame {
         if (s==0) {
             jugador[this.turn].setPositon(escalera[0].getStart());
 <<<<<<< HEAD
+<<<<<<< HEAD
             s++;
         }
         if (s==0) {
             jugador[this.turn].setPositon(serpiente[1].getStart());
 =======
+>>>>>>> parent of 2d76651 (Add: player 3)
 =======
 >>>>>>> parent of 2d76651 (Add: player 3)
             s++;
